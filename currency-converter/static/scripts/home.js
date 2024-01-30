@@ -5,7 +5,7 @@ async function convertCurrency() {
 	try {
 		const amountInput = document.getElementById('amount');
 		const amount = parseFloat(amountInput.value);
-		const fromCurrency = document.getElementById('from').value;
+		const fromCurrency = document.getElementById('from').value;	
 		const toCurrency = document.getElementById('to').value;
 
 		if (isNaN(amount) || amount < 0) {

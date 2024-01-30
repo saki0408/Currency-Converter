@@ -227,7 +227,7 @@ button::after {
 }
 
 button:hover {
-  color: #fff;
+  color: #000;
 }
 
 button:hover::after {
