@@ -6,35 +6,13 @@ body {
   font-size: 30px;
   margin: 0;
   padding: 0;
-  /* background-image: url("../images/stock-vector-dollar-sign-and-loop-arrow-currency-exchange-return-on-investment-insurance-concept-refund-1434567365.jpg"); */
   background-size: cover;
   background-color: #89d8d3;
   background-position: initial;
-  /* background-repeat: no-repeat; */
   text-align: center;
   margin: 0;
   padding: 0;
 }
-
-/* body {
-  height: 100vh;
-  display: flex;
-  flex-direction: column;
-  justify-content: center;
-  align-items: center;
-  font-family: 'Roboto', sans-serif;
-  margin: 0;
-}
-
-h2 {
-  margin: 0;
-  text-transform: uppercase;
-}
-
-h6 {
-  margin: 0;
-  color: #777;
-} */
 
 .wrapper {
   text-align: left;
@@ -94,7 +72,6 @@ h6 {
 
 #converter h2 {
   margin-bottom: 1px;
-  /* Adjust the margin value as needed */
 }
 
 .app-icon {
@@ -106,12 +83,8 @@ h6 {
 
 #swap-button {
   font-size: 20px;
-  /* Adjust the font size to change the button size */
   width: 40px;
-  /* Adjust the width */
   height: 40px;
-  /* Adjust the height */
-  /* You can add other styles as needed */
 }
 
 #converter {
@@ -122,11 +95,8 @@ h6 {
   max-width: 100%;
   transform: translate(-50%, -50%);
   width: 500px;
-  /* Set the desired width */
   height: 700px;
-  /* Set the desired height */
   padding: 20px;
-  /* Add padding if needed */
   margin: 50px auto;
   background-color: #fff;
   padding-bottom: 55px;
@@ -139,34 +109,15 @@ label {
   margin-bottom: 8px;
 }
 
-/* input {
-  width: 300px;
-  padding: 8px;
-  margin-bottom: 15px;
-} */
-
-/* html, body {
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  height: 100%;
-} */
-
 form {
   width: 100%;
-  /* Set the form width to 100% */
   height: 300px;
   max-width: 300px;
-  /* Set a max-width for better readability, adjust as needed */
 }
 
 input[type="text"] {
   box-sizing: content-box;
-  /* left: 10px;
-  right: 15px; */
   width: 300px;
-  /* max-width: 100%; Ensure the input does not exceed the form's width */
-  /* height: calc(4em + 1px); */
   margin: 0 0 1em;
   padding: 1em;
   border: 1px solid #ccc;
@@ -199,8 +150,6 @@ input[type="text"][required]:invalid+label[placeholder][alt]:before {
 input[type="text"][required]+label[placeholder] {
   display: block;
   position: relative;
-  /* top: 0; */
-  /* left: 1em; */
   pointer-events: none;
   line-height: 1em;
   margin-top: -1.75em;
@@ -222,9 +171,7 @@ input[type="text"][required]+label[placeholder]:before {
   background-position: center;
 }
 
-/* Add this CSS for the Unicode arrow character */
 .arrow-icon {
-  /* width: 390px; */
   align-content: center;
   align-items: center;
   font-size: 24px;
@@ -232,13 +179,6 @@ input[type="text"][required]+label[placeholder]:before {
   margin-top: 10px;
   line-height: 1;
 }
-
-/* .arrow-icon i {
-  font-size: 24px;
-  color: #777;
-  margin: 0 10px;
-} */
-
 
 button {
   margin-top: 10px;
@@ -264,11 +204,8 @@ button {
   z-index: 0;
   white-space: nowrap;
   display: inline-flex;
-  /* Use flex container */
   align-items: center;
-  /* Center vertically */
   justify-content: center;
-  /* Center horizontally */
 }
 
 button::after {
@@ -281,7 +218,6 @@ button::after {
   z-index: -1;
   border-radius: 5px;
   background-color: #4dccc6;
-  /* background-image: linear-gradient(315deg, #4dccc6 0%, #96e4df 74%); */
   box-shadow:
     -7px -7px 20px 0px #fff9,
     -4px -4px 5px 0px #fff9,
@@ -303,29 +239,11 @@ button:active {
   top: 2px;
 }
 
-/* * {
-	border: 0;
-	box-sizing: border-box;
-	margin: 0;
-	padding: 0;
-} */
 :root {
   --foldDur: 0.7s;
   font-size: calc(24px + (30 - 24)*(100vw - 320px)/(1280 - 320));
 }
 
-/* body, button {
-	color: #171717;
-	font: 1em Gaegu, cursive;
-	line-height: 1.5;
-} */
-/* body {
-	background-image:
-		linear-gradient(#8ccfd100 1.35em,#8ccfd1 1.4em 1.45em,#8ccfd100 1.5em),
-		linear-gradient(90deg,#e5e5e5 1.35em,#8ccfd1 1.4em 1.45em,#e5e5e5 1.5em);
-	background-position: 50% 0;
-	background-size: 1.5em 1.5em;
-} */
 form,
 .select__button,
 .select__options {
@@ -428,8 +346,8 @@ label {
     -0.05em 0 0 #fff inset;
   color: inherit;
   opacity: 0;
-  text-decoration:#000;
-  transition: opacity 0s var(--foldDur) steps(1); 
+  text-decoration: #000;
+  transition: opacity 0s var(--foldDur) steps(1);
 }
 
 .select__option:first-child {
@@ -456,7 +374,6 @@ label {
   content: "\2713";
 }
 
-/* Animation */
 .select__button[aria-expanded="true"] {
   animation-direction: normal;
   animation-fill-mode: forwards;
@@ -650,13 +567,20 @@ label {
   }
 }
 
+footer {
+  background-color: #03c8a8;
+  padding: 10px;
+  color: #fff;
+  text-align: center;
+  margin-top: 850px;
+}
+
 #result-box {
   display: inline-block;
   margin-top: 15px;
   padding: 10px;
-  background-color: #89d8d3;
+  background-color: #fff;
   border-radius: 8px;
-  /* box-shadow: 0 0 10px rgba(0, 0, 0, 0.1); */
 }
 
 #result {

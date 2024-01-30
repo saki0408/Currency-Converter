@@ -1,5 +1,3 @@
-// scripts.js
-
 var convertButtonClicked = false;
 
 async function convertCurrency() {
@@ -10,7 +8,6 @@ async function convertCurrency() {
 		const fromCurrency = document.getElementById('from').value;
 		const toCurrency = document.getElementById('to').value;
 
-		// Validate input amount
 		if (isNaN(amount) || amount < 0) {
 			alert('Please enter a valid amount greater than or equal to 0.');
 			return;
@@ -32,7 +29,6 @@ async function convertCurrency() {
 		const rate = data.rates[toCurrency];
 		const convertedAmount = (amount * rate).toFixed(2);
 
-		// Display the result
 		showResult(`${amount} ${fromCurrency} is equal to ${convertedAmount} ${toCurrency}`);
 
 	} catch (error) {
@@ -51,24 +47,21 @@ function showResult(message) {
 function swapCurrencies() {
 
 	if (!convertButtonClicked) {
-		// If not clicked, display an error message
 		alert("Please convert atleast once first.");
 		return;
 	}
 	var fromCurrency = document.getElementById("from").value;
 	var toCurrency = document.getElementById("to").value;
 
-	// Swap the values of the from and to dropdowns
 	document.getElementById("from").value = toCurrency;
 	document.getElementById("to").value = fromCurrency;
 
 	convertCurrency();
 }
 
-// ... (rest of the code remains unchanged)
-
 var tabs = $('.tabs');
 var selector = $('.tabs').find('a').length;
+var selector = $(".tabs").find(".selector")
 var activeItem = tabs.find('.active');
 var activeWidth = activeItem.innerWidth();
 $(".selector").css({
@@ -103,13 +96,11 @@ class SelectDropdown {
 	}
 	buildDropdown() {
 		if (this.select !== null) {
-			// create div to contain <select>
 			let wrapper = document.createElement("div");
 			wrapper.setAttribute("class", "select");
 			this.select.parentElement.insertBefore(wrapper, this.select);
 			wrapper.appendChild(this.select);
 
-			// create button
 			let id = this.select.id,
 				selectBtnAttrs = {
 					"class": "select__button select__button--pristine",
@@ -126,7 +117,6 @@ class SelectDropdown {
 			this.selectBtn.appendChild(selectBtnText);
 			wrapper.appendChild(this.selectBtn);
 
-			// create options div
 			let optionsAttrs = {
 				"class": "select__options",
 				"aria-labelledby": selectBtnAttrs.id
@@ -134,7 +124,6 @@ class SelectDropdown {
 			for (let a in optionsAttrs)
 				this.options.setAttribute(a, optionsAttrs[a]);
 
-			// then each option
 			for (let o of this.select.options) {
 				let option = document.createElement("a"),
 					optionText = document.createTextNode(o.innerHTML),
@@ -154,12 +143,10 @@ class SelectDropdown {
 			}
 			wrapper.appendChild(this.options);
 
-			// sync with pre-selected option
 			let preselected = this.options.querySelector(`[data-value=${this.select.value}]`);
 			preselected.setAttribute("aria-selected", true);
 			this.selectBtn.innerHTML = preselected.innerHTML;
 
-			// restack so options can appear over other dropdowns
 			let selects = document.querySelectorAll(".select"),
 				selectCount = 0;
 			while (selectCount < selects.length) {
@@ -167,7 +154,6 @@ class SelectDropdown {
 				++selectCount;
 			}
 
-			// assign event listeners
 			document.querySelector(`label[for=${id}]`).addEventListener("click", () => {
 				if (!this.isExpanded())
 					this.selectBtn.focus();
@@ -207,7 +193,6 @@ class SelectDropdown {
 	}
 	openSelect(e) {
 		if (!this.isExpanded()) {
-			// prevent immediate closing to not ruin animation
 			let foldDur = window.getComputedStyle(this.options);
 			foldDur = foldDur.getPropertyValue("transition-delay").split("");
 			if (foldDur.indexOf("m") > -1) {
@@ -221,7 +206,6 @@ class SelectDropdown {
 			this.isOpening = true;
 			setTimeout(() => { this.isOpening = false; }, foldDur);
 
-			// manage states
 			this.selectBtn.setAttribute("aria-expanded", true);
 
 			let btnClasses = this.selectBtn.classList,
@@ -236,7 +220,6 @@ class SelectDropdown {
 			}
 			btnClasses.add(animClass);
 
-			// set focus to selected option
 			let selected = this.options.querySelector("[aria-selected=true]");
 			if (selected !== null)
 				selected.focus();
@@ -247,11 +230,9 @@ class SelectDropdown {
 	closeSelect(e) {
 		if (this.isExpanded() && !this.isOpening) {
 			if (e && e.target !== this.options.childNodes[0]) {
-				// update values of both original and custom dropdowns
 				this.select.value = e.target.getAttribute("data-value");
 				this.selectBtn.innerHTML = e.target.innerHTML;
 
-				// indicate selected item
 				for (let n of this.options.childNodes)
 					n.setAttribute("aria-selected", false);
 
@@ -261,7 +242,6 @@ class SelectDropdown {
 			this.selectBtn.setAttribute("aria-expanded", false);
 			this.selectBtn.focus();
 
-			// fire animation
 			let btnClasses = this.selectBtn.classList,
 				animClass = `select__button--fold${this.select.options.length}`;
 
@@ -276,14 +256,13 @@ class SelectDropdown {
 				activeEl = document.activeElement,
 				linkFound = false;
 
-			// check for focused option
 			for (let l of optionLinks) {
 				if (activeEl === l) {
 					linkFound = true;
 					break;
 				}
 			}
-			// allow movement with arrows until top or bottom option is reached
+
 			if (linkFound) {
 				if (goTo === "previous" && activeEl !== optionLinks[0])
 					activeEl.previousSibling.focus();

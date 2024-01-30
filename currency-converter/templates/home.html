@@ -6,8 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
   <title>Currency Converter</title>
   <link rel="stylesheet" href="../static/styles/home.css">
-  <link rel="stylesheet" href="../fonts/all-fonts/css/all.min.css" integrity="b759edf0142860c2c5379a78dad440b6e00015068240e0de91455e28a66b127132a781f6474447173d0a5a99a3ee2f20">
-
+  <link rel="stylesheet" href="../fonts/all-fonts/css/all.min.css"
+    integrity="b759edf0142860c2c5379a78dad440b6e00015068240e0de91455e28a66b127132a781f6474447173d0a5a99a3ee2f20">
 </head>
 
 <body>
@@ -16,9 +16,9 @@
       <img src="../static/images/unnamed.png" class="app-icon" />
       <nav class="tabs">
         <div class="selector"></div>
-        <a href="home.html" class="active"><i></i>Home</a>
-        <a href="../templates/about_us.html"><i></i>About Us</a>
-        <a href="../templates/contact.html"><i></i>Contact</a>
+        <a href="home.html" class="active">Home</a>
+        <a href="about_us.html">About Us</a>
+        <a href="contact.html">Contact</a>
       </nav>
     </div>
   </header>
@@ -27,8 +27,6 @@
     <form>
       <input required='' type='text' id='amount'>
       <label alt='Convert' placeholder='Convert'></label>
-
-      <!-- <label for="from">From:</label> -->
       <label for="from">From:</label>
       <select id="from" name="from">
         <option value="none" selected>Select…</option>
@@ -38,12 +36,8 @@
         <option value="JPY">JPY</option>
       </select>
 
-      <!-- Add the exchange button -->
+      <!-- exchange button -->
       <button onclick="swapCurrencies()" id="swap-button">&#x21C5; </button>
-
-      <!-- Update the arrow icon with the button -->
-      <!-- <button onclick="exchangeCurrencies()" id="exchange-button">&#x21C5; Exchange</button> -->
-
 
       <label for="to">To:</label>
       <select id="to" name="to">
@@ -65,6 +59,11 @@
   </div>
   <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
   <script src="../static/scripts/home.js"></script>
+
+  <footer>
+    <p>&copy; 2024 Your Website. All rights reserved.</p>
+  </footer>
+
 </body>
 
 </html>

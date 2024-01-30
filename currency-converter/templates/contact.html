@@ -1,43 +1,47 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
   <meta charset="UTF-8">
   <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <link rel="stylesheet" href="../static/styles/about_us.css">
+  <link rel="stylesheet" href="../static/styles/contact.css">
+  <link href="https://fonts.googleapis.com/css?family=Audiowide%7CRoboto+Condensed" rel="stylesheet">
+  <link rel="stylesheet" href="../fonts/all-fonts/css/all.min.css"
+    integrity="b759edf0142860c2c5379a78dad440b6e00015068240e0de91455e28a66b127132a781f6474447173d0a5a99a3ee2f20">
   <title>Contact Us</title>
 </head>
+
 <body>
 
   <header>
-    <h1>Contact Us</h1>
-    <nav>
-      <a href="home.html">Home</a>
-      <a href="about_us.html">About</a>
-      <a href="contact.html" class="active">Contact</a>
-    </nav>
+    <div class="wrapper">
+      <img src="../static/images/unnamed.png" class="app-icon" />
+      <nav class="tabs">
+        <div class="selector"></div>
+        <a href="home.html">Home</a>
+        <a href="about_us.html">About Us</a>
+        <a href="contact.html" class="active">Contact</a>
+      </nav>
+    </div>
   </header>
 
-  <section class="content">
-    <p>Have questions or feedback? Reach out to us using the form below:</p>
-    
-    <form id="contact-form">
-      <label for="name">Name:</label>
-      <input type="text" id="name" name="name" required>
+  <div class="mailbg">
+    <label class="l1" for="mailinput">Your Email:</label>
+    <input class="mailinput" aria-label="Your Email" autocomplete="on" type="email" placeholder="">
+    <label class="l2" for="messtxt">Your Message:</label>
+    <textarea class="messtxt" aria-label="Your Message" placeholder=""></textarea>
+    <button class="sendmess" aria-label="Send message">Send<div class="bar"></div></button>
+    <div class="success">Message sent successfully.<br><br>Thanks!</div>
+    <button class="closemess" aria-label="Close Form">Close
+  </div></button>
+  </div>
 
-      <label for="email">Email:</label>
-      <input type="email" id="email" name="email" required>
-
-      <label for="message">Message:</label>
-      <textarea id="message" name="message" rows="4" required></textarea>
-
-      <button type="submit">Submit</button>
-    </form>
-  </section>
+  <script src="https://code.jquery.com/jquery-3.6.4.min.js"></script>
+  <script src="../static/scripts/contact.js"></script>
 
   <footer>
     <p>&copy; 2024 Your Website. All rights reserved.</p>
   </footer>
-
-  <script src="contact.js"></script>
 </body>
+
 </html>
