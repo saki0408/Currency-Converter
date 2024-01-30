@@ -1,55 +1,68 @@
 // scripts.js
 
+var convertButtonClicked = false;
+
 async function convertCurrency() {
 	event.preventDefault();
 	try {
-	  const amountInput = document.getElementById('amount');
-	  const amount = parseFloat(amountInput.value);
-	  const fromCurrency = document.getElementById('from').value;
-	  const toCurrency = document.getElementById('to').value;
-  
-	  // Validate input amount
-	  if (isNaN(amount) || amount < 0) {
-		alert('Please enter a valid amount greater than or equal to 0.');
-		return;
-	  }
-  
-	  if (fromCurrency === "none" || toCurrency === "none") {
-		showResult(null, "Please select the currencies");
-		return;
-	  }
-  
-	  const response = await fetch(`https://open.er-api.com/v6/latest/${fromCurrency}`);
-	  const data = await response.json();
-  
-	  if (!data || !data.rates || !data.rates[toCurrency]) {
-		console.error('Invalid response data:', data);
-		return;
-	  }
-  
-	  const rate = data.rates[toCurrency];
-	  const convertedAmount = (amount * rate).toFixed(2);
-  
-	  // Display the result
-	  showResult(`${amount} ${fromCurrency} is equal to ${convertedAmount} ${toCurrency}`);
-  
+		const amountInput = document.getElementById('amount');
+		const amount = parseFloat(amountInput.value);
+		const fromCurrency = document.getElementById('from').value;
+		const toCurrency = document.getElementById('to').value;
+
+		// Validate input amount
+		if (isNaN(amount) || amount < 0) {
+			alert('Please enter a valid amount greater than or equal to 0.');
+			return;
+		}
+
+		if (fromCurrency === "none" || toCurrency === "none") {
+			showResult(null, "Please select the currencies");
+			return;
+		}
+
+		const response = await fetch(`https://open.er-api.com/v6/latest/${fromCurrency}`);
+		const data = await response.json();
+
+		if (!data || !data.rates || !data.rates[toCurrency]) {
+			console.error('Invalid response data:', data);
+			return;
+		}
+
+		const rate = data.rates[toCurrency];
+		const convertedAmount = (amount * rate).toFixed(2);
+
+		// Display the result
+		showResult(`${amount} ${fromCurrency} is equal to ${convertedAmount} ${toCurrency}`);
+
 	} catch (error) {
-	  console.error('Error in convertCurrency:', error);
+		console.error('Error in convertCurrency:', error);
 	}
-  }
-  
-  function showResult(message) {
+	document.getElementById("swap-button").disabled = false;
+	convertButtonClicked = true;
+	document.getElementById("result-box").style.display = "block";
+}
+
+function showResult(message) {
 	const resultElement = document.getElementById('result');
 	resultElement.textContent = message;
-  }  
+}
 
 function swapCurrencies() {
-  var fromCurrency = document.getElementById("from").value;
-  var toCurrency = document.getElementById("to").value;
 
-  // Swap the values of the from and to dropdowns
-  document.getElementById("from").value = toCurrency;
-  document.getElementById("to").value = fromCurrency;
+	if (!convertButtonClicked) {
+		// If not clicked, display an error message
+		alert("Please convert atleast once first.");
+		return;
+	}
+	var fromCurrency = document.getElementById("from").value;
+	var toCurrency = document.getElementById("to").value;
+
+	// Swap the values of the from and to dropdowns
+	document.getElementById("from").value = toCurrency;
+	document.getElementById("to").value = fromCurrency;
+
+	convertCurrency();
 }
 
 // ... (rest of the code remains unchanged)
@@ -59,23 +72,23 @@ var selector = $('.tabs').find('a').length;
 var activeItem = tabs.find('.active');
 var activeWidth = activeItem.innerWidth();
 $(".selector").css({
-  "left": activeItem.position.left + "px",
-  "width": activeWidth + "px"
+	"left": activeItem.position.left + "px",
+	"width": activeWidth + "px"
 });
 
 $(".tabs").on("click", "a", function (e) {
-  e.preventDefault();
-  $('.tabs a').removeClass("active");
-  $(this).addClass('active');
-  var activeWidth = $(this).innerWidth();
-  var itemPos = $(this).position();
-  $(".selector").css({
-    "left": itemPos.left + "px",
-    "width": activeWidth + "px"
-  });
+	e.preventDefault();
+	$('.tabs a').removeClass("active");
+	$(this).addClass('active');
+	var activeWidth = $(this).innerWidth();
+	var itemPos = $(this).position();
+	$(".selector").css({
+		"left": itemPos.left + "px",
+		"width": activeWidth + "px"
+	});
 });
 
-document.addEventListener("DOMContentLoaded",() => {
+document.addEventListener("DOMContentLoaded", () => {
 	const from = new SelectDropdown({ id: "from" }),
 		to = new SelectDropdown({ id: "to" });
 });
@@ -92,8 +105,8 @@ class SelectDropdown {
 		if (this.select !== null) {
 			// create div to contain <select>
 			let wrapper = document.createElement("div");
-			wrapper.setAttribute("class","select");
-			this.select.parentElement.insertBefore(wrapper,this.select);
+			wrapper.setAttribute("class", "select");
+			this.select.parentElement.insertBefore(wrapper, this.select);
 			wrapper.appendChild(this.select);
 
 			// create button
@@ -107,7 +120,7 @@ class SelectDropdown {
 				};
 
 			for (let a in selectBtnAttrs)
-				this.selectBtn.setAttribute(a,selectBtnAttrs[a]);
+				this.selectBtn.setAttribute(a, selectBtnAttrs[a]);
 
 			let selectBtnText = document.createTextNode(this.select.options[0].innerHTML);
 			this.selectBtn.appendChild(selectBtnText);
@@ -119,7 +132,7 @@ class SelectDropdown {
 				"aria-labelledby": selectBtnAttrs.id
 			};
 			for (let a in optionsAttrs)
-				this.options.setAttribute(a,optionsAttrs[a]);
+				this.options.setAttribute(a, optionsAttrs[a]);
 
 			// then each option
 			for (let o of this.select.options) {
@@ -134,7 +147,7 @@ class SelectDropdown {
 					};
 
 				for (let a in optionAttrs)
-					option.setAttribute(a,optionAttrs[a]);
+					option.setAttribute(a, optionAttrs[a]);
 
 				option.appendChild(optionText);
 				this.options.appendChild(option);
@@ -143,7 +156,7 @@ class SelectDropdown {
 
 			// sync with pre-selected option
 			let preselected = this.options.querySelector(`[data-value=${this.select.value}]`);
-			preselected.setAttribute("aria-selected",true);
+			preselected.setAttribute("aria-selected", true);
 			this.selectBtn.innerHTML = preselected.innerHTML;
 
 			// restack so options can appear over other dropdowns
@@ -155,21 +168,21 @@ class SelectDropdown {
 			}
 
 			// assign event listeners
-			document.querySelector(`label[for=${id}]`).addEventListener("click",() => {
+			document.querySelector(`label[for=${id}]`).addEventListener("click", () => {
 				if (!this.isExpanded())
 					this.selectBtn.focus();
 				else
 					this.closeSelect();
 			});
-			this.selectBtn.addEventListener("click",() => { this.openSelect(); });
-			this.options.addEventListener("click",e => { this.closeSelect(e); });
+			this.selectBtn.addEventListener("click", () => { this.openSelect(); });
+			this.options.addEventListener("click", e => { this.closeSelect(e); });
 
-			document.addEventListener("click",() => {
+			document.addEventListener("click", () => {
 				let el = document.activeElement;
 				if (el.parentElement.getAttribute("aria-labelledby") !== selectBtnAttrs.id)
 					this.closeSelect();
 			});
-			window.addEventListener("keydown",e => {
+			window.addEventListener("keydown", e => {
 				switch (e.keyCode) {
 					case 27: // Esc
 						this.closeSelect();
@@ -198,7 +211,7 @@ class SelectDropdown {
 			let foldDur = window.getComputedStyle(this.options);
 			foldDur = foldDur.getPropertyValue("transition-delay").split("");
 			if (foldDur.indexOf("m") > -1) {
-				foldDur.splice(foldDur.length - 2,2);
+				foldDur.splice(foldDur.length - 2, 2);
 				foldDur = parseInt(foldDur.join(""));
 
 			} else if (foldDur.indexOf("s") > -1) {
@@ -206,10 +219,10 @@ class SelectDropdown {
 				foldDur = parseFloat(foldDur.join("")) * 1e3;
 			}
 			this.isOpening = true;
-			setTimeout(() => {this.isOpening = false;},foldDur);
+			setTimeout(() => { this.isOpening = false; }, foldDur);
 
 			// manage states
-			this.selectBtn.setAttribute("aria-expanded",true);
+			this.selectBtn.setAttribute("aria-expanded", true);
 
 			let btnClasses = this.selectBtn.classList,
 				pristineClass = "select__button--pristine",
@@ -240,12 +253,12 @@ class SelectDropdown {
 
 				// indicate selected item
 				for (let n of this.options.childNodes)
-					n.setAttribute("aria-selected",false);
+					n.setAttribute("aria-selected", false);
 
-				e.target.setAttribute("aria-selected",true);
+				e.target.setAttribute("aria-selected", true);
 				e.preventDefault();
 			}
-			this.selectBtn.setAttribute("aria-expanded",false);
+			this.selectBtn.setAttribute("aria-expanded", false);
 			this.selectBtn.focus();
 
 			// fire animation
