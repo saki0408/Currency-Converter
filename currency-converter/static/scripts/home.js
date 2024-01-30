@@ -1,48 +1,47 @@
 // scripts.js
 
-// scripts.js
-
 async function convertCurrency() {
-  try {
-    const amountInput = document.getElementById('amount');
-    const amount = parseFloat(amountInput.value);
-    const fromCurrency = document.getElementById('from').value;
-    const toCurrency = document.getElementById('to').value;
-
-    // Validate input amount
-    if (isNaN(amount) || amount < 0) {
-      alert('Please enter a valid amount greater than or equal to 0.');
-      return;
-    }
-
-    if (fromCurrency === "none" || toCurrency === "none") {
-      showResult(null, "Please select the currencies");
-      return;
-    }
-
-    const response = await fetch(`https://open.er-api.com/v6/latest/${fromCurrency}`);
-    const data = await response.json();
-
-    if (!data || !data.rates || !data.rates[toCurrency]) {
-      console.error('Invalid response data:', data);
-      return;
-    }
-
-    const rate = data.rates[toCurrency];
-    const convertedAmount = (amount * rate).toFixed(2);
-
-    // Display the result
-    showResult(`${amount} ${fromCurrency} is equal to ${convertedAmount} ${toCurrency}`);
-
-  } catch (error) {
-    console.error('Error in convertCurrency:', error);
+	event.preventDefault();
+	try {
+	  const amountInput = document.getElementById('amount');
+	  const amount = parseFloat(amountInput.value);
+	  const fromCurrency = document.getElementById('from').value;
+	  const toCurrency = document.getElementById('to').value;
+  
+	  // Validate input amount
+	  if (isNaN(amount) || amount < 0) {
+		alert('Please enter a valid amount greater than or equal to 0.');
+		return;
+	  }
+  
+	  if (fromCurrency === "none" || toCurrency === "none") {
+		showResult(null, "Please select the currencies");
+		return;
+	  }
+  
+	  const response = await fetch(`https://open.er-api.com/v6/latest/${fromCurrency}`);
+	  const data = await response.json();
+  
+	  if (!data || !data.rates || !data.rates[toCurrency]) {
+		console.error('Invalid response data:', data);
+		return;
+	  }
+  
+	  const rate = data.rates[toCurrency];
+	  const convertedAmount = (amount * rate).toFixed(2);
+  
+	  // Display the result
+	  showResult(`${amount} ${fromCurrency} is equal to ${convertedAmount} ${toCurrency}`);
+  
+	} catch (error) {
+	  console.error('Error in convertCurrency:', error);
+	}
   }
-}
-
-function showResult(message) {
-  const resultElement = document.getElementById('result');
-  resultElement.textContent = message;
-}
+  
+  function showResult(message) {
+	const resultElement = document.getElementById('result');
+	resultElement.textContent = message;
+  }  
 
 function swapCurrencies() {
   var fromCurrency = document.getElementById("from").value;

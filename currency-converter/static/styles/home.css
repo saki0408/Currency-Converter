@@ -1,5 +1,7 @@
 @import url('https://fonts.googleapis.com/css2?family=Poppins:wght@100&display=swap');
 
+
+
 body {
   font-family: 'Poppins', sans-serif;
   font-weight: 900;
@@ -104,6 +106,13 @@ h6 {
   margin-left: 500px;
 }
 
+#swap-button {
+  font-size: 20px; /* Adjust the font size to change the button size */
+  width: 40px; /* Adjust the width */
+  height: 40px; /* Adjust the height */
+  /* You can add other styles as needed */
+}
+
 #converter {
   margin-top: 100px;
   position: absolute;
@@ -119,7 +128,7 @@ h6 {
   /* Add padding if needed */
   margin: 50px auto;
   background-color: #fff;
-  padding-bottom: 50px;
+  padding-bottom: 55px;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
 }
@@ -231,7 +240,7 @@ input[type="text"][required]+label[placeholder]:before {
 
 
 button {
-  margin: 20px;
+  margin-top: 10px;
   width: 130px;
   height: 40px;
   color: #fff;
@@ -509,7 +518,7 @@ label {
 
 #result-box {
   display: inline-block;
-  margin-top: 20px;
+  margin-top: 15px;
   padding: 10px;
   background-color: #89d8d3;
   border-radius: 8px;
