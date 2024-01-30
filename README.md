@@ -1,8 +1,11 @@
 # Currency-Converter
 
 TITLE: Currency Converter Platform
+
 DOMAIN: Web / App
+
 Problem Statement:
+
 Develop a front-end for a dynamic currency converter platform that prioritizes a good user
 experience. The primary objective is to create an interface that seamlessly converts various
 currency units using real-time conversion rates obtained from a reliable external API. The
