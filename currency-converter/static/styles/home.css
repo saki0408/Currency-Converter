@@ -510,7 +510,7 @@ label {
 #result-box {
   display: inline-block;
   margin-top: 20px;
-  padding: 30px;
+  padding: 10px;
   background-color: #89d8d3;
   border-radius: 8px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
