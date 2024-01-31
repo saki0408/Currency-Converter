@@ -21,3 +21,5 @@ Instructions:
 4. Select the 'from' and 'to' currency.
 5. Click 'Get Exchange Rates' to get the conversion.
 6. Click the double arrow button to get the reverse conversion.
+7. Click 'About Us' to view information about the site.
+8. Click 'Contact' to enter your email and send a message.
