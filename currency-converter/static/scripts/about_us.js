@@ -7,14 +7,14 @@ $(".selector").css({
     "width": activeWidth + "px"
 });
 
-$(".tabs").on("click", "a", function (e) {
-    e.preventDefault();
-    $('.tabs a').removeClass("active");
-    $(this).addClass('active');
-    var activeWidth = $(this).innerWidth();
-    var itemPos = $(this).position();
-    $(".selector").css({
-        "left": itemPos.left + "px",
-        "width": activeWidth + "px"
-    });
-});
+// $(".tabs").on("click", "a", function (e) {
+//     e.preventDefault();
+//     $('.tabs a').removeClass("active");
+//     $(this).addClass('active');
+//     var activeWidth = $(this).innerWidth();
+//     var itemPos = $(this).position();
+//     $(".selector").css({
+//         "left": itemPos.left + "px",
+//         "width": activeWidth + "px"
+//     });
+// });
